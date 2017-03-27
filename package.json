@@ -5,7 +5,11 @@
   "dependencies": {
     "antd": "^2.8.2",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-markdown": "^2.4.6",
+    "react-redux": "^5.0.3",
+    "react-router": "^4.0.0",
+    "redux": "^3.6.0"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",
