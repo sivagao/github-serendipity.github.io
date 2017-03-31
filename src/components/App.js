@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Button } from 'antd';
-import './App.css';
+// import './App.css';
 import AppLayout from './AppLayout';
 
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
@@ -10,32 +10,26 @@ import GitlogTopics from './GitlogTopics';
 
 const Home = () => (<div> About This Repo: 用来快速找到一些好用的项目 </div>)
 
-const Nav = () => (
-  <div>
-    <Link to='/'>Home</Link>&nbsp;
-    <Link to='/topics'>Address</Link>
-  </div>
-)
-
-const Container = (props) => <div>
-  <Nav />
-  {props.children}
-</div>
-
 
 class App extends Component {
   render() {
     return (
-      <Router history={browserHistory}>
+      // https://github.com/ReactTraining/react-router/issues/2019 back to top after change route
+      <Router history={browserHistory} onUpdate={() => window.scrollTo(0, 0)}>
         <Route path='/' component={AppLayout}>
-          <IndexRoute component={Home} />
-          <Route path='topics' component={GitlogTopics} />
-          <Route path='repo/:repo' component={ReadmePanel} />
-          <Route path='*' component={ReadmePanel} />
+          {/* <IndexRoute component={Home} /> */}
+          <Route path='topics' component={{content: GitlogTopics}} hideSide={true} />
+          <Route path='repo/:repo' component={{content: ReadmePanel}} />
+          <Route path='repo/:repo/similar' component={{content: ReadmePanel}} />
+          <Route path='*' component={{content: ReadmePanel}} />
         </Route>
       </Router>
     );
   }
 }
+
+App.propTypes = {
+  store: PropTypes.object.isRequired,
+};
 
 export default App;

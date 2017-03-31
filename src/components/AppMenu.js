@@ -1,46 +1,64 @@
 import React, { Component } from 'react';
-import './App.css';
 
-import { Menu, Icon } from 'antd';
+import { Menu, Icon, Spin, Tooltip } from 'antd';
 const SubMenu = Menu.SubMenu;
 import { Link } from 'react-router';
+import _ from 'lodash'
 
+import {store, hourExpire} from '../utils/store'
 
 class AppMenu extends React.Component {
-  handleSelectRepo() {
-    console.log('fefdfdfd')
-  }
-  render() {
-    // if(!this.props.data) return;
-    const submenusElems = this.props.data.map((i)=>{
 
+  state = {}
+
+  render() {
+    console.log('rendering menu')
+    // default open all menus
+    const defaultKeys = ['Infinity,1000', 'topic_only', 'trending_first', 'Platforms', 'similar-repos']
+    const openKeys = _.union(defaultKeys, _.map(this.props.data, 'key'))
+    // const openKeys =
+    // openKeys &&  this.setState({ openKeys })
+    const cacheStore = store.get('repo:readdict')
+    const submenusElems = this.props.data.map((i)=>{
       let menuItemsElems = i.list.map((ii)=>{
         return (
           <Menu.Item key={ii.key}>
-            <Link to={'/repo/'+ii.key}>{ii.name}</Link>
+            {ii.description ? (
+              <Tooltip title={ii.description} placement="right">
+                <Link to={'/repo/'+ii.key}>
+                  {cacheStore[ii.key] && <Icon type="check" style={{"color": "green"}} />}
+                  {ii.name}
+                  <Icon type="info-circle-o" />
+                </Link>
+              </Tooltip>
+            ) : (
+              <Link to={'/repo/'+ii.key}>
+              {cacheStore[ii.key] && <Icon type="check" style={{"color": "green"}} />}
+              {ii.name}
+              </Link>
+            )}
           </Menu.Item>
         )
       })
 
       return (
-        <SubMenu
-          key={i.key}
-          title={<span className="nav-text">{i.name}</span>}
-        >
+        <SubMenu key={i.key}
+          title={<span className="nav-text">{i.name}</span>}>
           {menuItemsElems}
         </SubMenu>
       )
     })
+
     // const now = new Date()
     // const lastDay = new Date(now.setDate(now.getDate() -1)).toISOString().slice(0, 10)
     return (
-      <Menu inlineIndent="12" mode={this.props.mode}
-        defaultOpenKeys={['Infinity,1000', 'topic_only', 'trending_first', 'Platforms']}>
-        {/* onClick={({key})=>this.props.onClick(key)} */}
-        {/* theme="dark" */}
-        {/* defaultSelectedKeys={['6']} */}
-        {submenusElems}
-      </Menu>
+      <Spin spinning={this.props.loading}>
+        <Menu inlineIndent="12" mode={this.props.mode}
+          defaultOpenKeys={openKeys}>
+          {submenusElems}
+        </Menu>
+      </Spin>
+
     );
   }
 }

@@ -1,5 +1,118 @@
+@import url(~antd/dist/antd.css);
+@import url(./utils/text-surinami.css);
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-}
+  background: #eee; }
+
+.ga-header {
+  background: #fff;
+  padding: 0; }
+
+.ga-header .logo {
+  display: inline-block;
+  margin: 0 20px;
+  font-size: 20px;
+  height: 64px;
+  line-height: 64px;
+  width: 230px;
+  vertical-align: top; }
+
+.ga-header .ant-menu {
+  line-height: 64px;
+  font-size: 18px;
+  display: inline-block; }
+
+.ga-header .view-repo {
+  vertical-align: top;
+  margin-top: 16px;
+  line-height: 32px;
+  height: 32px; }
+
+.ga-main {
+  margin-top: 20px; }
+
+.ga-main .ga-content {
+  padding-left: 20px; }
+
+.ga-main .ga-content .ant-spin {
+  margin-top: 50px; }
+
+.ga-main .ga-content .ga-readme-wrap, .ga-main .ga-content .ga-topics-wrap {
+  background: #fff;
+  padding: 24px;
+  margin: 0;
+  min-height: 280px; }
+
+.ga-topics-wrap .ant-card-body {
+  line-height: 30px; }
+
+.ga-topics-wrap .ant-card-head-title {
+  font-size: 18px; }
+
+.ga-readme-wrap .ga-readme .ant-spin {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  margin-top: 0; }
+
+.ga-readme-wrap .ant-spin {
+  display: block; }
+
+.ga-readme-wrap .ant-spin-dot {
+  margin: auto;
+  margin-top: 100px; }
+
+#smarttoc-extender {
+  display: none; }
+
+.ant-menu-submenu-title span {
+  font-size: 18px;
+  color: #108ee9; }
+
+.ant-menu-inline.ant-menu-sub > li {
+  font-size: 14px; }
+
+.ant-menu-inline.ant-menu-sub .anticon-check {
+  margin-left: -18px;
+  margin-right: 4px;
+  color: green; }
+
+.ant-menu-inline.ant-menu-sub .anticon-info-circle-o {
+  color: #999;
+  margin-left: 4px; }
+
+.markdown-body img {
+  max-width: 70%; }
+
+.markdown-body .markdown-link {
+  text-decoration: underline; }
+
+.App {
+  text-align: center; }
+
+.App-intro {
+  font-size: large; }
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
+.app-layout .logo {
+  height: 32px;
+  background: #333;
+  border-radius: 6px;
+  margin: 16px; }
+
+.app-layout .ant-layout-sider-collapsed .anticon {
+  font-size: 16px;
+  margin-left: 8px; }
+
+.app-layout .ant-layout-sider-collapsed .nav-text {
+  display: none; }
+
+.app-layout .ant-layout-sider-collapsed .ant-menu-submenu-vertical > .ant-menu-submenu-title:after {
+  display: none; }

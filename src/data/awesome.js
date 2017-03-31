@@ -1,11 +1,18 @@
 import axios from 'axios'
 import _ from 'lodash'
+import {store, hourExpire} from '../utils/store'
 
+// has cache 6 hours
 export function getAwesomeMenus(cb) {
+  const cacheKey = `repos:awesome`
+
+  if(store.get(cacheKey)) {
+    cb(store.get(cacheKey))
+  } else {
     axios({
       url: 'https://raw.githubusercontent.com/lockys/awesome.json/master/awesome/awesome.json'
-  }).then(({data})=>{
-      cb(_.map(data, (list, k)=>{
+    }).then(({data})=>{
+      const menus = _.map(data, (list, k)=>{
         return {
           key: k,
           name: k,
@@ -16,6 +23,9 @@ export function getAwesomeMenus(cb) {
             }
           })
         }
-      }))
+      });
+      store.set(cacheKey, menus, hourExpire(6))
+      cb(menus)
     })
+  }
 }

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
-
 import { Router, Route, Link, Switch } from 'react-router'
 // https://reacttraining.com/react-router/web/example/basic
 // Router version 4 changed from passing in the browserHistory class to passing an instance of browserHistory
@@ -16,38 +14,20 @@ import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
+import { browserHistory } from 'react-router'
 
-const dataSources = ['Trending', 'Rank', 'Awesome', 'Topics'];
 
-import {getTopicRepoList, TagTopicsAsMenus, getTrendingBatch } from '../data/gitlogs'
+import {getTopicRepoList, RankAsMenus, getTrendingBatch } from '../data/gitlogs'
 import {getAwesomeMenus} from '../data/awesome'
+import {getSimAsMenus} from '../data/yasiv'
 
-const INavHeader = (props) => (
-  <Header style={{ background: '#fff', padding: 0 }}>
+import AppHead from './AppHead'
 
-    <Menu mode="horizontal">
-      {/* Todo: need logo <div className="logo" style={{ display: 'inline', color: '#fff', 'font-size': '24px'}}>
-        Plaza Repo
-      </div> */}
-      {dataSources.map((s)=>{
-        let v = s.toLowerCase()
-        return (
-          <Menu.Item key={v}>
-            <Link to={'/'+v}>
-              {v}
-            </Link>
-          </Menu.Item>
-        )
-      })}
-      {/* Todo: 当是 topic 时候，也显示在 menu 上用于展示 */}
-    </Menu>
-  </Header>
-)
 
 class AppLayout extends React.Component {
 
   state = {
-    menuData: TagTopicsAsMenus
+    menuData: []
   }
 
   componentDidMount() {
@@ -57,39 +37,73 @@ class AppLayout extends React.Component {
 
     const {history} = this.props;
 
+    function setMenuAndFetch(menu) {
+      // Todo: exception handle
+      that.setState({
+        menuData: menu,
+        menuLoading: false,
+        similarUrl: '',
+      });
+      // http://stackoverflow.com/questions/36187134/react-router-2-0-programmatically-change-route-url-not-updated
+      browserHistory.push('/repo/' + menu[0].list[0].key)
+    }
+
     const unlisten = history.listen((location, action) => {
       // location is an object like window.location
       console.log(action.location.pathname)
       const pathname = action.location.pathname
+      if(pathname.startsWith('/repo/')) {
+        if(pathname.endsWith('/similar')) {
+          that.setState({
+            menuLoading: true,
+          })
+          getSimAsMenus(action.params.repo.replace('___', '/'), (menu)=>{
+            setMenuAndFetch(menu);
+          })
+        } else {
+          that.setState({
+            menuLoading: false,
+            similarUrl: `/repo/${action.params.repo}/similar`
+          })
+        }
+      } else {
+        that.setState({
+          menuLoading: true,
+          similarUrl: '',
+        })
+      }
       if(pathname.startsWith('/topic/')) {
         // fetch app menu data
         // reload to first readme
         var topic = pathname.replace('/topic/', '')
         getTopicRepoList(topic, (menu)=>{
           // Todo: adapter
-          that.setState({
-            menuData: menu
-          })
+          setMenuAndFetch(menu);
         })
       }
       if(pathname === '/topics') {
         // hide sidebar menu
+        that.setState({
+          menuData: [],
+          menuLoading: false
+        });
       }
 
-      if(pathname === '/awesome') {
+      // Default type repos list
+      if(pathname === '/awesome' || pathname === '/') {
         getAwesomeMenus((menu)=>{
-          that.setState({
-            menuData: menu
-          })
+          setMenuAndFetch(menu);
         })
       }
 
       if(pathname === '/trending') {
         getTrendingBatch((menu)=>{
-          that.setState({
-            menuData: menu
-          })
+          setMenuAndFetch(menu);
         })
+      }
+
+      if(pathname === '/rank') {
+        setMenuAndFetch(RankAsMenus);
       }
     })
   }
@@ -103,97 +117,21 @@ class AppLayout extends React.Component {
     console.log('render applayout')
 
     return (
-      <div>
-        <Layout>
-          <INavHeader />
-          <Layout>
-            <Sider width={200} style={{ background: '#fff' }}>
-              <AppMenu data={this.state.menuData}  mode="inline" />
-              {/* onClick={(key)=>this.handleSelectRepo(key)} */}
+      <Layout>
+        <AppHead similarUrl={this.state.similarUrl} />
+        <Layout className="ga-main">
+          { !!this.state.menuData.length && (
+            <Sider width={250} style={{ background: '#fff' }}>
+              <AppMenu data={this.state.menuData} loading={this.state.menuLoading} mode="inline" />
             </Sider>
-            <Layout style={{ padding: '0 24px 24px' }}>
-
-              <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-                {this.props.children}
-              </Content>
-            </Layout>
+          )}
+          <Layout className="ga-content">
+            {this.props.content}
           </Layout>
         </Layout>
-      </div>
-
+      </Layout>
     )
   }
 }
-
-// const AppLayout = (props)=> {
-//   return (
-//     <div>
-//
-//     </div>
-//   )
-// }
-
-//
-// class AppLayout extends React.Component {
-//
-//   // state = {
-//   //   collapsed: false,
-//   //   mode: 'inline',
-//   // }
-//
-//   onCollapse(collapsed){
-//     console.log(collapsed);
-//     this.setState({
-//       collapsed,
-//       mode: collapsed ? 'vertical' : 'inline',
-//       reporeadme: '# This is a header\n\nAnd this is a paragraph'
-//     });
-//   }
-//   handleSelectRepo(key) {
-//     // fetch repo readme. setState
-//     // let self = this;
-//     // getReadme(key, (content)=>{
-//     //   self.setState({
-//     //     reporeadme: content
-//     //   })
-//     // })
-//   }
-//   render(props) {
-//
-//
-//     if(this.props) {
-//       console.log(this.props)
-//     }
-//
-//     // check route params set
-//
-//     return (
-//
-//
-//       // <Layout className="app-layout">
-//       //   <Sider
-//       //     collapsible
-//       //     collapsed={this.state.collapsed}
-//       //     onCollapse={this.onCollapse}>
-
-//       //     <AppMenu data={rankData} onClick={(key)=>this.handleSelectRepo(key)} mode="inline" />
-//       //   </Sider>
-//       //   <Layout>
-//       //     <INavHeader />
-//       //     <Content style={{ margin: '16px' }}>
-//       //       <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-//       //         <Route path="/" component={GitlogTopics} />
-//       //         <Route path="/repo/:repo" component={ReadmePanel} />
-//       //         <Route component={ReadmePanel} />
-//       //       </div>
-//       //     </Content>
-//       //     <Footer style={{ textAlign: 'center' }}>
-//       //       Ant Design ©2016 Created by Ant UED
-//       //     </Footer>
-//       //   </Layout>
-//       // </Layout>
-//     );
-//   }
-// }
 
 export default AppLayout;
