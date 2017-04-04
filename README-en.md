@@ -1,5 +1,4 @@
-Github Serendipity. smart way to explore popular github repo
-browse and find high quality repo quickly and elegantly, with trending, rank, awesome, topics, similar dimensions
+Github Serendipity. smart way to explore popular github repo. browse and find high quality repo quickly and elegantly, with trending, rank, awesome, topics, similar dimensions
 
 ## Background
 
