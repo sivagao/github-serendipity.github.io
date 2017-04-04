@@ -11,3 +11,7 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+
+// var language = navigator.languages && navigator.languages[0] ||
+//    navigator.language ||
+//    navigator.userLanguage;
