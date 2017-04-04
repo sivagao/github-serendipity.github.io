@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // const ReactMarkdown = require('react-markdown');
 import ReactMarkdown from 'react-markdown';
 
-import {getReadme} from '../data/github';
+import { getReadme } from '../data/github';
 
-import {Spin, BackTop, Tag} from 'antd';
+import { Spin, BackTop } from 'antd';
 
-import {HeadingRenderer, LinkRenderer, ImageRenderer, transformImageUri, transformLinkUri} from '../utils/markdown';
+import {HeadingRenderer, LinkRenderer, transformImageUri, transformLinkUri} from '../utils/markdown';
 import _ from 'lodash'
 
 import {run as tocRun} from '../utils/toc'

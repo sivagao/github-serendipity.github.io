@@ -5,7 +5,8 @@ body {
   background: #eee;
 }
 
-@import '~antd/dist/antd.css';
+// @import '~antd/dist/antd.css';
+// 然后移除全量添加的 @import '~antd/dist/antd.css'; 样式代码，现在 babel-plugin-import 会按需加载样式。
 @import './utils/text-surinami.css';
 
 .ga-header {
@@ -35,6 +36,12 @@ body {
     height: 32px;
   }
 
+  .ga-side-menu {
+    .ant-menu-item-selected {
+      border: none;
+    }
+  }
+
 }
 .ga-main {
   margin-top: 20px;
@@ -58,6 +65,12 @@ body {
   }
   .ant-card-head-title {
     font-size: 18px;
+  }
+  .ant-tag {
+    font-size: 14px;
+    line-height: 24px;
+    height: 26px;
+    margin: 4px 8px;
   }
 }
 .ga-readme-wrap {
@@ -87,6 +100,10 @@ body {
   span {
     font-size: 18px;
     color: #108ee9;
+  }
+  .anticon-info-circle-o {
+    margin-left: 6px;
+    vertical-align: middle;
   }
 }
 .ant-menu-inline.ant-menu-sub {

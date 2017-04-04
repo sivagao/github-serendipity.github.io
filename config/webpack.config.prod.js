@@ -85,7 +85,7 @@ module.exports = {
       'react-native': 'react-native-web'
     }
   },
-  
+
   module: {
     // First, run the linter.
     // It's important to do this before Babel processes the JS.
@@ -124,7 +124,11 @@ module.exports = {
         test: /\.(js|jsx)$/,
         include: paths.appSrc,
         loader: 'babel',
-        
+        query: {
+          plugins: [
+             ['import', [{ libraryName: "antd", style: 'css' }]],
+          ],
+        }
       },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
@@ -165,7 +169,7 @@ module.exports = {
       // Remember to add the new extension(s) to the "url" loader exclusion list.
     ]
   },
-  
+
   // We use PostCSS for autoprefixing only.
   postcss: function() {
     return [
@@ -214,9 +218,11 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     // Minify the code.
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: false,
       compress: {
         screw_ie8: true, // React doesn't support IE8
-        warnings: false
+        warnings: false,
+        drop_console: true  // Drop console statements
       },
       mangle: {
         screw_ie8: true

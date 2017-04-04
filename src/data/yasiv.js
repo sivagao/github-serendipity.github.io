@@ -6,7 +6,7 @@ import { notification } from 'antd';
 export function getSimAsMenus (repo, cb){
 
   axios({
-    url: `http://s3.amazonaws.com/github_yasiv/out/${repo}.json`,
+    url: `${location.protocol}//s3.amazonaws.com/github_yasiv/out/${repo}.json`,
   }).then(({data})=>{
     const menu = {
       name: `Similar To ${repo.split('/')[1]}`,

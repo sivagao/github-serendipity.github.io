@@ -1,15 +1,18 @@
 import React, { Component, PropTypes } from 'react';
-import { Button } from 'antd';
-// import './App.css';
 import AppLayout from './AppLayout';
 
-import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
+import { Router, Route, browserHistory } from 'react-router'
 
 import ReadmePanel from './ReadmePanel';
 import GitlogTopics from './GitlogTopics';
 
-const Home = () => (<div> About This Repo: 用来快速找到一些好用的项目 </div>)
+// const Home = () => (<div> About This Repo: 用来快速找到一些好用的项目 </div>)
 
+// import { useRouterHistory } from 'react-router'
+// import { createHistory, useBasename } from 'history'
+// const browserHistory = useRouterHistory(useBasename(createHistory))({
+//   basename: "/github-serendipity"
+// });
 
 class App extends Component {
   render() {

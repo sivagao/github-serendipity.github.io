@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 
-import React, { Component } from 'react';
+import React from 'react';
 
 
 import { Card, Icon, Tag, Spin } from 'antd';
@@ -18,9 +18,9 @@ class GitlogTopics extends React.Component {
   }
 
   componentWillMount() {
-    getAllTopics(((CategoryTopics)=>{
+    getAllTopics((CategoryTopics)=>{
       this.setState({CategoryTopics})
-    }).bind(this))
+    })
   }
 
   render() {

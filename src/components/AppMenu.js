@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import { Menu, Icon, Spin, Tooltip } from 'antd';
+import { Menu, Icon, Spin, Tooltip, Popover } from 'antd';
 const SubMenu = Menu.SubMenu;
 import { Link } from 'react-router';
 import _ from 'lodash'
 
-import {store, hourExpire} from '../utils/store'
+import { store } from '../utils/store'
 
 class AppMenu extends React.Component {
 
@@ -18,7 +18,30 @@ class AppMenu extends React.Component {
     const openKeys = _.union(defaultKeys, _.map(this.props.data, 'key'))
     // const openKeys =
     // openKeys &&  this.setState({ openKeys })
-    const cacheStore = store.get('repo:readdict')
+    const cacheStore = store.get('repo:readdict') || {}
+
+    const wxGroupPopover = (i)=>{
+      return (
+        <div>
+          感兴趣 {_.capitalize(i.name)} 话题，加专业的群讨论吧~ <br/>
+          <img src={`${process.env.PUBLIC_URL}/qrcode_for_wx.jpg`} />
+        </div>
+      )
+    }
+
+    const getSubTitle = (i)=>{
+      return (
+        <span className="nav-text">
+          { (i.key === 'topic_only') ? (
+            <Popover placement="rightBottom" trigger="hover" title="加群" content={wxGroupPopover(i)}>
+              {i.name}
+              <Icon type="info-circle-o" />
+            </Popover>
+          ) : i.name }
+        </span>
+      )
+    }
+
     const submenusElems = this.props.data.map((i)=>{
       let menuItemsElems = i.list.map((ii)=>{
         return (
@@ -26,7 +49,7 @@ class AppMenu extends React.Component {
             {ii.description ? (
               <Tooltip title={ii.description} placement="right">
                 <Link to={'/repo/'+ii.key}>
-                  {cacheStore[ii.key] && <Icon type="check" style={{"color": "green"}} />}
+                  {cacheStore[ii.key] && <Icon type="check" />}
                   {ii.name}
                   <Icon type="info-circle-o" />
                 </Link>
@@ -43,7 +66,7 @@ class AppMenu extends React.Component {
 
       return (
         <SubMenu key={i.key}
-          title={<span className="nav-text">{i.name}</span>}>
+          title={getSubTitle(i)}>
           {menuItemsElems}
         </SubMenu>
       )

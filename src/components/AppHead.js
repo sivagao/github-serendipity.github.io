@@ -1,16 +1,16 @@
 import { Menu, Icon, Tag } from 'antd';
-import { Router, Route, Link, Switch } from 'react-router'
-import React, { Component } from 'react';
-import { Layout, Radio } from 'antd';
+import { Link } from 'react-router'
+import React from 'react';
+import { Layout } from 'antd';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header } = Layout;
 
 
 const dataSources = ['Awesome', 'Trending', 'Rank', 'Topics'];
 
 const AppHead = (props) => (
   <Header className="ga-header">
-    <Link to="/" className="logo link link--surinami">
+    <Link to="/repo/github-serendipity___github-serendipity.github.io" className="logo link link--surinami">
       <span data-letters-l="Github " data-letters-r="Serendipity">Github Serendipity</span>
     </Link>
 
@@ -30,13 +30,19 @@ const AppHead = (props) => (
         </Menu.Item>
       )}
 
+
+      {props.similarUrl && (
+        <Tag className="view-repo">
+          <a href={'//github.com/'+props.similarUrl.replace('/repo/', '').replace('/similar', '').replace('___', '/')} target="_blank"> View On Github</a>
+        </Tag>
+      )}
+
+      <Menu.Item>
+        <Link to="/repo/github-serendipity___github-serendipity.github.io"><Icon type="github" />About</Link>
+      </Menu.Item>
+
     </Menu>
 
-    {props.similarUrl && (
-      <Tag className="view-repo">
-        <a href={'//github.com/'+props.similarUrl.replace('/repo/', '').replace('/similar', '').replace('___', '/')} target="_blank"> View On Github</a>
-      </Tag>
-    )}
   </Header>
 )
 
