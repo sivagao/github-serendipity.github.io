@@ -74,10 +74,9 @@ Serendipity, 意外新发现; 巧事; 机缘凑巧; 随意浏览这些高质量�
 - 数据 json 化和 update 机制
 
 
-### 源代码
+### 代码
 
-好久没写前端，第一次写 React，等后续随着不断加些新功能， polish 和 refactor 后再放出
-
+基于 Create React App, UI 框架试用 Ant Design.
 
 ### 引用
 
