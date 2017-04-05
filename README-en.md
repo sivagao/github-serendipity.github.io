@@ -69,5 +69,5 @@ all credits go to
 - [awesomelists.top/](http://awesomelists.top/)
 - [awesome](https://github.com/sindresorhus/awesome)
 - [smart-toc](https://github.com/FallenMax/smart-toc)
-- [gitlogs](gitlogs.com)
-- [yasiv.com](yasiv.com/github)
+- [gitlogs](http://gitlogs.com)
+- [yasiv.com](http://yasiv.com/github)
