@@ -3,6 +3,9 @@
 
 技术人刷微博，朋友圈。不如来刷 Github Serendipity ~
 
+欢迎订阅 Star & Watch 该项目，每次在 issues 发布新文章会收到提示。
+新文章主要包括了每周流行汇总点评，特定 Topic 中热门项目的系统回顾和点评，Topic 里有新热门点评等文章，同时也包括其他 Github 相关技巧的文章 [issues](https://github.com/github-serendipity/github-serendipity.github.io/issues)
+
 Serendipity, 意外新发现; 巧事; 机缘凑巧; 随意浏览这些高质量的 Repo，可以给我们发现很多可能性『创造生命的惊喜』~
 
 > 花心思花时间选择究竟应该Follow谁，实际上就是在用已有的观念去过滤信息——换言之，就是用自己已有的观念给自己搭建一个新的牢房
