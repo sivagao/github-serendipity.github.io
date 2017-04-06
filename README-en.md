@@ -1,4 +1,4 @@
-English | [简体中文](./blob/master/README.md)
+English | [简体中文](https://github.com/github-serendipity/github-serendipity.github.io/blob/master/README.md)
 
 Github Serendipity. smart way to explore popular github repo. browse and find high quality repo quickly and elegantly, with trending, rank, awesome, topics, similar dimensions
 

@@ -1,4 +1,4 @@
-[English](./blob/master/README-en.md) | 简体中文
+[English](https://github.com/github-serendipity/github-serendipity.github.io/blob/master/README-en.md) | 简体中文
 
 ## 用途
 
