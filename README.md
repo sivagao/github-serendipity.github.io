@@ -1,4 +1,4 @@
-[English](./README-en.md) | 简体中文
+[English](./blob/master/README-en.md) | 简体中文
 
 ## 用途
 
@@ -18,7 +18,7 @@ Serendipity, 意外新发现; 巧事; 机缘凑巧; 随意浏览这些高质量�
 - [李笑来：如何创造自己生命中的惊喜]()
 
 
-平时我也自己通过去找寻一些热门和优秀的 Github 项目来看，有很多优秀的工具，具体在文章 [Github Tips - Explore](./github-explore-tips.md)有提到。但是它们相互比较独立，发现和浏览体验比较割裂。所以就自己撸了一个用于发现和浏览这些优秀项目的 Side Project
+平时我也自己通过去找寻一些热门和优秀的 Github 项目来看，有很多优秀的工具，具体在文章 [Github Tips - Explore](./blob/master/github-explore-tips.md)有提到。但是它们相互比较独立，发现和浏览体验比较割裂。所以就自己撸了一个用于发现和浏览这些优秀项目的 Side Project
 
 它主要包括
 
