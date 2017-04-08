@@ -1,3 +1,5 @@
+English | [简体中文](https://github.com/github-serendipity/github-serendipity.github.io/blob/master/README.md)
+
 Github Serendipity. smart way to explore popular github repo. browse and find high quality repo quickly and elegantly, with trending, rank, awesome, topics, similar dimensions
 
 ## Background
@@ -6,7 +8,7 @@ Programmers who waste their time on Twitter and Facebook, should take some time 
 
 Serendipity, accidental new discovery; This project(webapp) provides the great opportunity to browse and find high quality repo quickly and elegantly, with trending, rank, awesome, topics, similar dimensions.
 
-Some great data and ideas come from previous other programmers's project, which is addressed at my article [Github Explore Tip](./github-explore-tips.md).
+Some great data and ideas come from previous other programmers's project, which is addressed at my article [Github Explore Tip](https://github.com/github-serendipity/github-serendipity.github.io/blob/master/github-explore-tips.md).
 
 the main features:
 
