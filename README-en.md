@@ -1,26 +1,26 @@
 English | [简体中文](https://github.com/github-serendipity/github-serendipity.github.io/blob/master/README.md)
 
-Github Serendipity. smart way to explore popular github repo. browse and find high quality repo quickly and elegantly, with trending, rank, awesome, topics, similar dimensions
+Github Serendipity. A smart way to explore popular github repos. Browse and find high quality repos quickly and elegantly, with trending, rank, awesome, topics, similar dimensions.
 
 ## Background
 
 Programmers who waste their time on Twitter and Facebook, should take some time to navigate through Github Serendipity ~
 
-Serendipity, accidental new discovery; This project(webapp) provides the great opportunity to browse and find high quality repo quickly and elegantly, with trending, rank, awesome, topics, similar dimensions.
+Serendipity: accidental new discovery.  This project(webapp) provides a great opportunity to browse and find high quality repos quickly and elegantly, with trending, rank, awesome, topics, similar dimensions.
 
-Some great data and ideas come from previous other programmers's project, which is addressed at my article [Github Explore Tip](https://github.com/github-serendipity/github-serendipity.github.io/blob/master/github-explore-tips.md).
+Some great data and ideas come from previous other programmers's projects, addressed at my article [Github Explore Tip](https://github.com/github-serendipity/github-serendipity.github.io/blob/master/github-explore-tips.md).
 
-the main features:
+Main features:
 
-- Awesome: Show awesome - the Awesome List, the one-stop viewing experience [Awesome - curated list of awesome lists] (https://github.com/sindresorhus/awesome)
+- Awesome: Show awesome - the Awesome List, a one-stop viewing experience [Awesome - curated list of awesome lists] (https://github.com/sindresorhus/awesome)
 - Trending: Show new trends in nearly ten days of time dimension, catch hot trends, keep pace with the times
-- Rank: Based on the Trending project in the past year, select Repo with no specific programming language. They are mostly guides and tutorials, it provide a chance to find new ideas from these non-hardcode projects
-- Topics: Topics are aggregated from the Backend, FrontEnd, DevOps, Guides, Tools, Design, Mobile and other categories and sorted by popularity. It make you quickly find all the topics popular repos
-- Similar: Find similar repos for the current repo, a good chance to know more, to compare and to combine.
+- Rank: Based on Trending projects in the past year, select Repo with no specific programming language. They are mostly guides and tutorials, it provides a chance to find new ideas from these non-hardcode projects
+- Topics: Topics are aggregated from the Backend, FrontEnd, DevOps, Guides, Tools, Design, Mobile and other categories and sorted by popularity. It lets you quickly find all the topics of popular repos
+- Similar: Find similar repos to the current repo, a good chance to see more, to compare and to combine.
 
 ## screenshots
 
-- Auto generated dynamically contents
+- Dynamically auto generated contents
 - View more repo info at Github
 - Based on Awesome, nearly 600 awesome lists
 - Tick to mark read
